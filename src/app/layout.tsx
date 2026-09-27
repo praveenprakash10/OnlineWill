@@ -32,6 +32,16 @@ export const metadata: Metadata = {
     locale: "en_IN",
     type: "website",
   },
+  twitter: {
+    card: "summary_large_image",
+    title: "OnlineWill.in",
+    description:
+      "Guides on wills and estate planning in India. Product coming soon.",
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {

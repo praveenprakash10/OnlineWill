@@ -2,12 +2,18 @@
 title: Will vs nominee in India — what is the difference?
 description: Nominees and legal heirs are often confused. Here is how nomination works alongside a will for bank accounts, insurance, and investments.
 date: 2026-09-18
+updated: 2026-09-26
+cover: /images/articles/will-vs-nominee-in-india.svg
+coverAlt: Side-by-side cards comparing nominee and will
+author: OnlineWill.in
 tags:
   - nominees
   - basics
 ---
 
 A nominee is often treated as the owner of an asset. That is usually incorrect. In many cases, a nominee is a caretaker who receives the asset so it can be passed to the rightful heirs.
+
+![Nominee versus will comparison graphic](/images/articles/will-vs-nominee-in-india.svg "Nomination helps transfer; a will clarifies ultimate ownership.")
 
 ## Nominee
 

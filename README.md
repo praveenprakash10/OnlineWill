@@ -9,6 +9,8 @@ Next.js site for [OnlineWill.in](https://onlinewill.in): educational articles no
 | `/` | Temporary homepage listing latest articles |
 | `/articles` | Full articles archive (stable long-term section) |
 | `/articles/[slug]` | Individual article pages |
+| `/sitemap.xml` | Auto-generated sitemap for search engines |
+| `/robots.txt` | Crawler rules |
 
 Articles live as Markdown in `content/articles/`. When the product launches, replace only `src/app/page.tsx` with the product homepage. Keep `/articles` unchanged so URLs and SEO stay intact.
 
@@ -22,6 +24,10 @@ Articles live as Markdown in `content/articles/`. When the product launches, rep
 title: Your title
 description: One or two sentences for listings and SEO.
 date: 2026-09-23
+updated: 2026-09-26
+cover: /images/articles/your-cover.jpg
+coverAlt: Short description of the cover image
+author: OnlineWill.in
 tags:
   - basics
 ---
@@ -30,6 +36,35 @@ Markdown body here.
 ```
 
 3. Visit `/articles/your-slug` (or the homepage list).
+
+### Images
+
+- Put files in `public/images/articles/` (or any `public/` path).
+- In Markdown:
+
+```md
+![Alt text for accessibility & SEO](/images/articles/example.jpg "Optional caption shown under the image")
+```
+
+- Remote images (e.g. Unsplash) also work: `![Alt](https://images.unsplash.com/...)`
+- Cover images use `cover` / `coverAlt` in front matter and appear on cards + article headers (Open Graph too).
+
+### YouTube embeds
+
+Paste a YouTube URL alone on its own line (watch, short, or youtu.be links):
+
+```md
+https://www.youtube.com/watch?v=VIDEO_ID
+```
+
+It renders as a responsive 16:9 embed.
+
+## SEO included
+
+- Per-article title, description, canonical URL
+- Open Graph + Twitter cards (with cover image when set)
+- JSON-LD `Article` structured data
+- `sitemap.xml` and `robots.txt`
 
 ## Local development
 
@@ -42,13 +77,11 @@ Open [http://localhost:3000](http://localhost:3000).
 
 ## Deploy to Vercel
 
-1. Push this repo to GitHub (or GitLab / Bitbucket).
+1. Push this repo to GitHub.
 2. In [Vercel](https://vercel.com/new), import the repo.
-3. Framework preset: **Next.js** (auto-detected). Build command `next build`, output default.
-4. Add your domain `onlinewill.in` under Project → Settings → Domains.
-5. Point DNS as Vercel instructs (usually A/CNAME records at your registrar).
-
-Optional: set `NEXT_PUBLIC_SITE_URL=https://onlinewill.in` later if you add absolute URL helpers.
+3. Framework preset: **Next.js** (auto-detected).
+4. Add domain `onlinewill.in` under Project → Settings → Domains.
+5. Point DNS as Vercel instructs.
 
 ## Later: product homepage
 
@@ -61,4 +94,4 @@ Optional: set `NEXT_PUBLIC_SITE_URL=https://onlinewill.in` later if you add abso
 
 - Next.js (App Router) + TypeScript
 - Tailwind CSS
-- Markdown via `gray-matter` + `remark` / `rehype`
+- Markdown via `gray-matter` + `remark` / `rehype` (images, YouTube, GFM)

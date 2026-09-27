@@ -6,18 +6,28 @@ import { unified } from "unified";
 import remarkParse from "remark-parse";
 import remarkGfm from "remark-gfm";
 import remarkRehype from "remark-rehype";
+import rehypeRaw from "rehype-raw";
 import rehypeSlug from "rehype-slug";
 import rehypeStringify from "rehype-stringify";
+import {
+  remarkImageFigures,
+  remarkYouTubeEmbeds,
+} from "@/lib/remark-media";
 
 const articlesDirectory = path.join(process.cwd(), "content/articles");
+export const SITE_URL = "https://onlinewill.in";
 
 export type ArticleMeta = {
   slug: string;
   title: string;
   description: string;
   date: string;
+  updated?: string;
   readingTime: string;
   tags?: string[];
+  cover?: string;
+  coverAlt?: string;
+  author?: string;
 };
 
 export type Article = ArticleMeta & {
@@ -37,11 +47,35 @@ function getMarkdownFiles() {
     .filter((file) => file.endsWith(".md"));
 }
 
+function parseMeta(
+  slug: string,
+  data: Record<string, unknown>,
+  content: string,
+): ArticleMeta {
+  const stats = readingTime(content);
+
+  return {
+    slug,
+    title: String(data.title ?? slug),
+    description: String(data.description ?? ""),
+    date: String(data.date ?? ""),
+    updated: data.updated ? String(data.updated) : undefined,
+    readingTime: stats.text,
+    tags: Array.isArray(data.tags) ? data.tags.map(String) : undefined,
+    cover: data.cover ? String(data.cover) : undefined,
+    coverAlt: data.coverAlt ? String(data.coverAlt) : undefined,
+    author: data.author ? String(data.author) : "OnlineWill.in",
+  };
+}
+
 async function markdownToHtml(markdown: string) {
   const result = await unified()
     .use(remarkParse)
     .use(remarkGfm)
+    .use(remarkYouTubeEmbeds)
+    .use(remarkImageFigures)
     .use(remarkRehype, { allowDangerousHtml: true })
+    .use(rehypeRaw)
     .use(rehypeSlug)
     .use(rehypeStringify, { allowDangerousHtml: true })
     .process(markdown);
@@ -57,16 +91,7 @@ export function getAllArticles(): ArticleMeta[] {
     const fullPath = path.join(articlesDirectory, filename);
     const fileContents = fs.readFileSync(fullPath, "utf8");
     const { data, content } = matter(fileContents);
-    const stats = readingTime(content);
-
-    return {
-      slug,
-      title: String(data.title ?? slug),
-      description: String(data.description ?? ""),
-      date: String(data.date ?? ""),
-      readingTime: stats.text,
-      tags: Array.isArray(data.tags) ? data.tags.map(String) : undefined,
-    } satisfies ArticleMeta;
+    return parseMeta(slug, data as Record<string, unknown>, content);
   });
 
   return articles.sort(
@@ -83,16 +108,11 @@ export async function getArticleBySlug(slug: string): Promise<Article | null> {
 
   const fileContents = fs.readFileSync(fullPath, "utf8");
   const { data, content } = matter(fileContents);
-  const stats = readingTime(content);
+  const meta = parseMeta(slug, data as Record<string, unknown>, content);
   const contentHtml = await markdownToHtml(content);
 
   return {
-    slug,
-    title: String(data.title ?? slug),
-    description: String(data.description ?? ""),
-    date: String(data.date ?? ""),
-    readingTime: stats.text,
-    tags: Array.isArray(data.tags) ? data.tags.map(String) : undefined,
+    ...meta,
     contentHtml,
   };
 }
@@ -105,4 +125,15 @@ export function formatArticleDate(date: string) {
     month: "long",
     day: "numeric",
   }).format(new Date(date));
+}
+
+export function absoluteUrl(pathOrUrl: string) {
+  if (pathOrUrl.startsWith("http://") || pathOrUrl.startsWith("https://")) {
+    return pathOrUrl;
+  }
+  return `${SITE_URL}${pathOrUrl.startsWith("/") ? "" : "/"}${pathOrUrl}`;
+}
+
+export function articleUrl(slug: string) {
+  return `${SITE_URL}/articles/${slug}`;
 }

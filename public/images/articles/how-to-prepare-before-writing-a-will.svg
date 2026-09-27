@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900" role="img" aria-label="Abstract illustration of a preparation checklist">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="1" x2="1" y2="0">
+      <stop offset="0%" stop-color="#163a48"/>
+      <stop offset="100%" stop-color="#1a7a68"/>
+    </linearGradient>
+  </defs>
+  <rect width="1600" height="900" fill="url(#bg)"/>
+  <circle cx="1320" cy="200" r="240" fill="#2a9d8f" opacity="0.2"/>
+  <rect x="420" y="140" width="760" height="620" rx="36" fill="#f7fbfa"/>
+  <rect x="500" y="220" width="36" height="36" rx="8" fill="#0f6b5c"/>
+  <path d="M508 238 l8 8 16-16" fill="none" stroke="#f7fbfa" stroke-width="4" stroke-linecap="round"/>
+  <rect x="560" y="228" width="480" height="20" rx="10" fill="#0f6b5c" opacity="0.75"/>
+  <rect x="500" y="320" width="36" height="36" rx="8" fill="#0f6b5c"/>
+  <path d="M508 338 l8 8 16-16" fill="none" stroke="#f7fbfa" stroke-width="4" stroke-linecap="round"/>
+  <rect x="560" y="328" width="420" height="20" rx="10" fill="#5c6f75" opacity="0.35"/>
+  <rect x="500" y="420" width="36" height="36" rx="8" fill="#d8efe9" stroke="#0f6b5c" stroke-width="3"/>
+  <rect x="560" y="428" width="450" height="20" rx="10" fill="#5c6f75" opacity="0.28"/>
+  <rect x="500" y="520" width="36" height="36" rx="8" fill="#d8efe9" stroke="#0f6b5c" stroke-width="3"/>
+  <rect x="560" y="528" width="390" height="20" rx="10" fill="#5c6f75" opacity="0.22"/>
+  <rect x="500" y="620" width="36" height="36" rx="8" fill="#d8efe9" stroke="#0f6b5c" stroke-width="3"/>
+  <rect x="560" y="628" width="410" height="20" rx="10" fill="#5c6f75" opacity="0.22"/>
+</svg>

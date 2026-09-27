@@ -2,12 +2,18 @@
 title: How to prepare before writing a will
 description: A practical checklist—assets, beneficiaries, guardians, and documents—so drafting a will feels manageable rather than overwhelming.
 date: 2026-09-15
+updated: 2026-09-26
+cover: /images/articles/how-to-prepare-before-writing-a-will.svg
+coverAlt: Illustrated checklist for preparing a will
+author: OnlineWill.in
 tags:
   - checklist
   - planning
 ---
 
 Writing a will is easier when you gather information first. Use this checklist before you draft.
+
+![Checklist illustration for will preparation](/images/articles/how-to-prepare-before-writing-a-will.svg "Gather assets, people, and papers before you draft.")
 
 ## 1. List your assets
 
@@ -37,5 +43,7 @@ Pick someone trustworthy and willing. Tell them where the will will be kept.
 ## 6. Gather identification and proofs
 
 Keep identity documents and property papers organised. You will need them for a clean draft and for future updates.
+
+---
 
 Once OnlineWill.in’s guided will service is live, this preparation checklist will map directly into the product flow. Until then, use these articles to get ready.

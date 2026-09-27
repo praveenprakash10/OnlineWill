@@ -2,12 +2,18 @@
 title: Why every Indian adult needs a will
 description: A clear look at what happens without a will in India, and why writing one early protects the people you care about.
 date: 2026-09-20
+updated: 2026-09-26
+cover: /images/articles/why-every-indian-adult-needs-a-will.svg
+coverAlt: Illustrated will document with a verification seal
+author: OnlineWill.in
 tags:
   - basics
   - india
 ---
 
 Most people assume a will is only for the elderly or the wealthy. In practice, a will is useful for anyone who owns assets, has dependents, or simply wants their wishes followed.
+
+![Family discussing estate planning notes at a table](/images/articles/why-every-indian-adult-needs-a-will.svg "A will turns informal family conversations into clear written instructions.")
 
 ## What happens if you die without a will?
 
@@ -27,3 +33,7 @@ A will can cover:
 You do not need a perfect document on day one. Begin with a clear list of assets and intended beneficiaries. Update the will when major life events happen—marriage, children, property purchases, or divorce.
 
 > OnlineWill.in will eventually help you create a structured will online. Until then, these articles explain the fundamentals so you can prepare with confidence.
+
+## Prefer watching?
+
+When you have a related explainer video, paste the YouTube URL on its own line in the Markdown file—it becomes an embedded player automatically.
