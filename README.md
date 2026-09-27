@@ -7,17 +7,50 @@ Next.js site for [OnlineWill.in](https://onlinewill.in): educational articles no
 | Route | Purpose |
 | --- | --- |
 | `/` | Temporary homepage listing latest articles |
-| `/articles` | Full articles archive (stable long-term section) |
+| `/articles` | Full articles archive |
 | `/articles/[slug]` | Individual article pages |
-| `/sitemap.xml` | Auto-generated sitemap for search engines |
+| `/faq`, `/contact` | Editable pages (`content/pages/`) |
+| `/admin` | TinaCMS editor |
+| `/sitemap.xml` | Sitemap |
 | `/robots.txt` | Crawler rules |
 
-Articles live as Markdown in `content/articles/`. When the product launches, replace only `src/app/page.tsx` with the product homepage. Keep `/articles` unchanged so URLs and SEO stay intact.
+Content lives as Markdown in `content/articles/` and `content/pages/`. When the product launches, replace only `src/app/page.tsx`. Keep `/articles` unchanged.
 
-## Add an article
+## Edit with TinaCMS (recommended)
 
-1. Create `content/articles/your-slug.md`
-2. Add front matter:
+### Local
+
+```bash
+npm install
+npm run dev
+```
+
+Open [http://localhost:3000/admin](http://localhost:3000/admin) — no login required in local mode.
+
+- **Articles** → create/edit posts (saved to `content/articles/`)
+- **Pages** → edit FAQ, Contact, or add new pages (saved to `content/pages/`)
+
+### Production (Vercel)
+
+1. Create a project at [app.tina.io](https://app.tina.io) and connect `praveenprakash10/OnlineWill`.
+2. Copy **Client ID** and **Read-only token** into Vercel env vars (and a local `.env` from `.env.example`):
+
+```bash
+NEXT_PUBLIC_TINA_CLIENT_ID=...
+TINA_TOKEN=...
+```
+
+3. Redeploy. Editors sign in at `https://onlinewill.in/admin`.
+
+Tina commits changes to GitHub; Vercel rebuilds the site.
+
+> Commit `tina/tina-lock.json` whenever the schema changes so TinaCloud can index your content.
+
+## Edit Markdown by hand (optional)
+
+Same as before: edit files under `content/`, commit, push.
+
+### Article front matter
 
 ```md
 ---
@@ -35,63 +68,30 @@ tags:
 Markdown body here.
 ```
 
-3. Visit `/articles/your-slug` (or the homepage list).
-
-### Images
-
-- Put files in `public/images/articles/` (or any `public/` path).
-- In Markdown:
+### Images & YouTube
 
 ```md
-![Alt text for accessibility & SEO](/images/articles/example.jpg "Optional caption shown under the image")
-```
+![Alt text](/images/articles/example.jpg "Optional caption")
 
-- Remote images (e.g. Unsplash) also work: `![Alt](https://images.unsplash.com/...)`
-- Cover images use `cover` / `coverAlt` in front matter and appear on cards + article headers (Open Graph too).
-
-### YouTube embeds
-
-Paste a YouTube URL alone on its own line (watch, short, or youtu.be links):
-
-```md
 https://www.youtube.com/watch?v=VIDEO_ID
 ```
 
-It renders as a responsive 16:9 embed.
+(YouTube URL must be alone on its own line.)
 
 ## SEO included
 
-- Per-article title, description, canonical URL
-- Open Graph + Twitter cards (with cover image when set)
-- JSON-LD `Article` structured data
+- Per-article/page metadata, Open Graph, Twitter cards
+- JSON-LD for articles
 - `sitemap.xml` and `robots.txt`
-
-## Local development
-
-```bash
-npm install
-npm run dev
-```
-
-Open [http://localhost:3000](http://localhost:3000).
 
 ## Deploy to Vercel
 
-1. Push this repo to GitHub.
-2. In [Vercel](https://vercel.com/new), import the repo.
-3. Framework preset: **Next.js** (auto-detected).
-4. Add domain `onlinewill.in` under Project → Settings → Domains.
-5. Point DNS as Vercel instructs.
-
-## Later: product homepage
-
-1. Build the will product under routes such as `/create` or `/app`.
-2. Replace the homepage content in `src/app/page.tsx`.
-3. Keep nav link to **Articles**.
-4. No need to move existing posts—they already use `/articles/...`.
+1. Import the GitHub repo in [Vercel](https://vercel.com/new).
+2. Add Tina env vars when you enable TinaCloud.
+3. Add domain `onlinewill.in`.
 
 ## Stack
 
-- Next.js (App Router) + TypeScript
-- Tailwind CSS
-- Markdown via `gray-matter` + `remark` / `rehype` (images, YouTube, GFM)
+- Next.js (App Router) + TypeScript + Tailwind
+- Markdown via `gray-matter` + `remark` / `rehype`
+- TinaCMS for browser-based editing
