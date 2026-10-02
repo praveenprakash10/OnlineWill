@@ -11,10 +11,10 @@ export default function HomePage() {
         <p className="text-sm font-medium uppercase tracking-[0.14em] text-accent">
           Guides for India
         </p>
-        <h1 className="brand-mark mt-3 max-w-xl text-4xl leading-[1.1] tracking-tight text-foreground md:text-5xl">
+        <h1 className="brand-mark mt-3 max-w-3xl text-4xl leading-[1.1] tracking-tight text-foreground md:text-5xl lg:text-6xl">
           OnlineWill.in
         </h1>
-        <p className="mt-4 max-w-xl text-lg leading-relaxed text-muted">
+        <p className="mt-4 max-w-2xl text-lg leading-relaxed text-muted md:text-xl">
           Practical articles on wills, nominees, and estate planning—while we
           build a simple online will service.
         </p>

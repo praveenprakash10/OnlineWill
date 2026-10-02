@@ -132,7 +132,7 @@ export default async function ArticlePage({ params }: ArticlePageProps) {
             height={900}
             className="h-auto w-full object-cover"
             priority
-            sizes="(max-width: 768px) 100vw, 720px"
+            sizes="(max-width: 768px) 100vw, 100vw"
           />
         </figure>
       ) : null}

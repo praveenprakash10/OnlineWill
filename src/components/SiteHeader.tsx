@@ -9,14 +9,17 @@ const links = [
 
 export function SiteHeader() {
   return (
-    <header className="site-shell flex items-center justify-between gap-6 py-7">
+    <header className="site-shell flex flex-wrap items-center justify-between gap-x-6 gap-y-3 py-5 sm:py-7">
       <Link
         href="/"
-        className="brand-mark text-[1.35rem] font-semibold text-foreground transition-opacity hover:opacity-80"
+        className="brand-mark text-[1.25rem] font-semibold text-foreground transition-opacity hover:opacity-80 sm:text-[1.35rem]"
       >
         OnlineWill<span className="text-accent">.in</span>
       </Link>
-      <nav aria-label="Primary" className="flex items-center gap-5 text-sm">
+      <nav
+        aria-label="Primary"
+        className="flex flex-wrap items-center gap-x-4 gap-y-2 text-sm sm:gap-x-5"
+      >
         {links.map((link) => (
           <Link
             key={link.href}

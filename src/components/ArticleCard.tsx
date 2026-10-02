@@ -20,7 +20,7 @@ export function ArticleCard({ article, index = 0 }: ArticleCardProps) {
 
   return (
     <article
-      className={`group grid gap-5 border-b border-line py-8 first:pt-0 last:border-b-0 md:grid-cols-[200px_1fr] md:items-start ${delayClass} animate-rise`}
+      className={`group grid gap-4 border-b border-line py-7 first:pt-0 last:border-b-0 sm:gap-5 sm:py-8 md:grid-cols-[minmax(180px,280px)_1fr] md:items-start ${delayClass} animate-rise`}
     >
       {article.cover ? (
         <Link
@@ -32,23 +32,18 @@ export function ArticleCard({ article, index = 0 }: ArticleCardProps) {
             alt={article.coverAlt ?? article.title}
             fill
             className="object-cover transition-transform duration-500 group-hover:scale-[1.03]"
-            sizes="(max-width: 768px) 100vw, 200px"
+            sizes="(max-width: 768px) 100vw, 280px"
           />
         </Link>
-      ) : (
-        <div
-          className="hidden aspect-[16/10] rounded-xl bg-accent-soft md:block"
-          aria-hidden="true"
-        />
-      )}
+      ) : null}
 
-      <div>
+      <div className="min-w-0">
         <p className="text-sm text-muted">
           <time dateTime={article.date}>{formatArticleDate(article.date)}</time>
           <span aria-hidden="true"> · </span>
           <span>{article.readingTime}</span>
         </p>
-        <h2 className="brand-mark mt-2 text-2xl leading-snug tracking-tight text-foreground md:text-[1.7rem]">
+        <h2 className="brand-mark mt-2 text-xl leading-snug tracking-tight text-foreground sm:text-2xl md:text-[1.7rem]">
           <Link
             href={`/articles/${article.slug}`}
             className="transition-colors group-hover:text-accent"
@@ -56,7 +51,7 @@ export function ArticleCard({ article, index = 0 }: ArticleCardProps) {
             {article.title}
           </Link>
         </h2>
-        <p className="mt-3 max-w-2xl text-[1.02rem] leading-relaxed text-muted">
+        <p className="mt-3 max-w-3xl text-[1.02rem] leading-relaxed text-muted">
           {article.description}
         </p>
         <Link
