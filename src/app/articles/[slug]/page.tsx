@@ -126,25 +126,21 @@ export default async function ArticlePage({ params }: ArticlePageProps) {
               </ul>
             ) : null}
           </header>
-        </div>
-      </div>
 
-      {article.cover ? (
-        <figure className="article-cover site-shell animate-rise animate-rise-delay-2 mt-8 overflow-hidden rounded-2xl">
-          <CoverImage
-            src={article.cover}
-            alt={article.coverAlt ?? article.title}
-            width={1600}
-            height={900}
-            className="h-auto w-full object-cover"
-            priority
-            sizes="100vw"
-          />
-        </figure>
-      ) : null}
+          {article.cover ? (
+            <figure className="article-cover animate-rise animate-rise-delay-2 mt-8 overflow-hidden rounded-2xl">
+              <CoverImage
+                src={article.cover}
+                alt={article.coverAlt ?? article.title}
+                width={1600}
+                height={900}
+                className="h-auto w-full object-cover"
+                priority
+                sizes="(max-width: 768px) 100vw, 720px"
+              />
+            </figure>
+          ) : null}
 
-      <div className="site-shell">
-        <div className="article-column">
           <div
             className="article-prose animate-rise animate-rise-delay-3 pt-8"
             dangerouslySetInnerHTML={{ __html: article.contentHtml }}
