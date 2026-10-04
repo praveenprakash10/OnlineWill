@@ -80,51 +80,57 @@ export default async function ArticlePage({ params }: ArticlePageProps) {
   }
 
   return (
-    <article className="site-shell pb-16 pt-4">
+    <article className="pb-16 pt-4">
       <ArticleJsonLd article={article} />
 
-      <p className="animate-rise text-sm text-muted">
-        <Link href="/articles" className="hover:text-foreground">
-          Articles
-        </Link>
-        <span aria-hidden="true"> / </span>
-        <span className="line-clamp-1">{article.title}</span>
-      </p>
+      <div className="site-shell">
+        <div className="article-column">
+          <p className="animate-rise text-sm text-muted">
+            <Link href="/articles" className="hover:text-foreground">
+              Articles
+            </Link>
+            <span aria-hidden="true"> / </span>
+            <span className="line-clamp-1">{article.title}</span>
+          </p>
 
-      <header className="animate-rise animate-rise-delay-1 border-b border-line pb-8 pt-6">
-        <p className="text-sm text-muted">
-          <time dateTime={article.date}>{formatArticleDate(article.date)}</time>
-          {article.updated ? (
-            <>
+          <header className="animate-rise animate-rise-delay-1 border-b border-line pb-8 pt-6">
+            <p className="text-sm text-muted">
+              <time dateTime={article.date}>
+                {formatArticleDate(article.date)}
+              </time>
+              {article.updated ? (
+                <>
+                  <span aria-hidden="true"> · </span>
+                  <span>Updated {formatArticleDate(article.updated)}</span>
+                </>
+              ) : null}
               <span aria-hidden="true"> · </span>
-              <span>Updated {formatArticleDate(article.updated)}</span>
-            </>
-          ) : null}
-          <span aria-hidden="true"> · </span>
-          <span>{article.readingTime}</span>
-        </p>
-        <h1 className="brand-mark mt-3 text-4xl leading-[1.12] tracking-tight text-foreground md:text-5xl">
-          {article.title}
-        </h1>
-        <p className="mt-4 max-w-2xl text-lg leading-relaxed text-muted">
-          {article.description}
-        </p>
-        {article.tags && article.tags.length > 0 ? (
-          <ul className="mt-5 flex flex-wrap gap-2">
-            {article.tags.map((tag) => (
-              <li
-                key={tag}
-                className="rounded-md bg-accent-soft px-2.5 py-1 text-xs font-medium text-accent"
-              >
-                {tag}
-              </li>
-            ))}
-          </ul>
-        ) : null}
-      </header>
+              <span>{article.readingTime}</span>
+            </p>
+            <h1 className="brand-mark mt-3 text-4xl leading-[1.12] tracking-tight text-foreground md:text-5xl">
+              {article.title}
+            </h1>
+            <p className="mt-4 text-lg leading-relaxed text-muted">
+              {article.description}
+            </p>
+            {article.tags && article.tags.length > 0 ? (
+              <ul className="mt-5 flex flex-wrap gap-2">
+                {article.tags.map((tag) => (
+                  <li
+                    key={tag}
+                    className="rounded-md bg-accent-soft px-2.5 py-1 text-xs font-medium text-accent"
+                  >
+                    {tag}
+                  </li>
+                ))}
+              </ul>
+            ) : null}
+          </header>
+        </div>
+      </div>
 
       {article.cover ? (
-        <figure className="article-cover animate-rise animate-rise-delay-2 mt-8 overflow-hidden rounded-2xl">
+        <figure className="article-cover site-shell animate-rise animate-rise-delay-2 mt-8 overflow-hidden rounded-2xl">
           <CoverImage
             src={article.cover}
             alt={article.coverAlt ?? article.title}
@@ -132,21 +138,25 @@ export default async function ArticlePage({ params }: ArticlePageProps) {
             height={900}
             className="h-auto w-full object-cover"
             priority
-            sizes="(max-width: 768px) 100vw, 100vw"
+            sizes="100vw"
           />
         </figure>
       ) : null}
 
-      <div
-        className="article-prose animate-rise animate-rise-delay-3 pt-8"
-        dangerouslySetInnerHTML={{ __html: article.contentHtml }}
-      />
+      <div className="site-shell">
+        <div className="article-column">
+          <div
+            className="article-prose animate-rise animate-rise-delay-3 pt-8"
+            dangerouslySetInnerHTML={{ __html: article.contentHtml }}
+          />
 
-      <ArticleShare
-        title={article.title}
-        description={article.description}
-        url={articleUrl(article.slug)}
-      />
+          <ArticleShare
+            title={article.title}
+            description={article.description}
+            url={articleUrl(article.slug)}
+          />
+        </div>
+      </div>
     </article>
   );
 }
