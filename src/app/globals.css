@@ -6,6 +6,7 @@
   --muted: #5c6f75;
   --accent: #0f6b5c;
   --accent-soft: #d8efe9;
+  --nav: #0b3d5c;
   --surface: rgba(255, 255, 255, 0.78);
   --line: rgba(20, 36, 40, 0.1);
   --glow: rgba(15, 107, 92, 0.18);
@@ -17,6 +18,7 @@
   --color-muted: var(--muted);
   --color-accent: var(--accent);
   --color-accent-soft: var(--accent-soft);
+  --color-nav: var(--nav);
   --color-surface: var(--surface);
   --color-line: var(--line);
   --font-sans: var(--font-body);
