@@ -57,10 +57,38 @@ body {
     0 18px 40px rgba(20, 36, 40, 0.08);
 }
 
-/* Centered reading column so text aligns under full-width covers */
-.article-column {
-  width: min(720px, 100%);
+/* Article page: centered container like typical resource blogs */
+.article-shell {
+  width: min(1120px, 100%);
   margin-inline: auto;
+  padding-inline: clamp(1.25rem, 4vw, 2rem);
+  box-sizing: border-box;
+}
+
+.article-layout {
+  display: grid;
+  gap: 2.5rem;
+}
+
+@media (min-width: 900px) {
+  .article-layout {
+    grid-template-columns: minmax(0, 1fr) 260px;
+    gap: 3rem;
+    align-items: start;
+  }
+}
+
+.article-sidebar {
+  font-size: 0.95rem;
+  color: var(--muted);
+}
+
+@media (min-width: 900px) {
+  .article-sidebar {
+    position: sticky;
+    top: 1.5rem;
+    padding-top: 0.25rem;
+  }
 }
 
 .article-prose {
