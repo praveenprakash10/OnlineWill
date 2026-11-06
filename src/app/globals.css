@@ -38,11 +38,11 @@ body {
   color: var(--foreground);
 }
 
+/* Shared page width for home, articles, FAQ, contact, header, footer */
 .site-shell {
-  width: 100%;
-  max-width: none;
-  margin-inline: 0;
-  padding-inline: clamp(1.25rem, 4vw, 3rem);
+  width: min(1120px, 100%);
+  margin-inline: auto;
+  padding-inline: clamp(1.25rem, 4vw, 2rem);
   box-sizing: border-box;
 }
 
@@ -55,14 +55,6 @@ body {
   box-shadow:
     0 1px 2px rgba(20, 36, 40, 0.06),
     0 18px 40px rgba(20, 36, 40, 0.08);
-}
-
-/* Article page: centered container like typical resource blogs */
-.article-shell {
-  width: min(1120px, 100%);
-  margin-inline: auto;
-  padding-inline: clamp(1.25rem, 4vw, 2rem);
-  box-sizing: border-box;
 }
 
 .article-layout {

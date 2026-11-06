@@ -83,7 +83,7 @@ export default async function ArticlePage({ params }: ArticlePageProps) {
     <article className="pb-16 pt-4">
       <ArticleJsonLd article={article} />
 
-      <div className="article-shell">
+      <div className="site-shell">
         <p className="animate-rise text-sm text-muted">
           <Link href="/articles" className="hover:text-foreground">
             Articles
